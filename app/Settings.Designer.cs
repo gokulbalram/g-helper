@@ -86,8 +86,8 @@ namespace GHelper
             labelTipScreen = new Label();
             tableScreen = new TableLayoutPanel();
             buttonScreenAuto = new RButton();
-            button60Hz = new RButton();
-            button120Hz = new RButton();
+            buttonLowerRefresh = new RButton();
+            buttonMaxRefresh = new RButton();
             buttonMiniled = new RButton();
             buttonFHD = new RButton();
             panelScreenTitle = new Panel();
@@ -1090,8 +1090,8 @@ namespace GHelper
             tableScreen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableScreen.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 25F));
             tableScreen.Controls.Add(buttonScreenAuto, 0, 0);
-            tableScreen.Controls.Add(button60Hz, 1, 0);
-            tableScreen.Controls.Add(button120Hz, 2, 0);
+            tableScreen.Controls.Add(buttonLowerRefresh, 1, 0);
+            tableScreen.Controls.Add(buttonMaxRefresh, 2, 0);
             tableScreen.Controls.Add(buttonMiniled, 3, 0);
             tableScreen.Controls.Add(buttonFHD, 3, 0);
             tableScreen.Dock = DockStyle.Top;
@@ -1123,44 +1123,44 @@ namespace GHelper
             buttonScreenAuto.Text = Properties.Strings.AutoMode;
             buttonScreenAuto.UseVisualStyleBackColor = false;
             // 
-            // button60Hz
+            // buttonLowerRefresh
             // 
-            button60Hz.Activated = false;
-            button60Hz.BackColor = SystemColors.ControlLightLight;
-            button60Hz.BorderColor = Color.Transparent;
-            button60Hz.BorderRadius = 5;
-            button60Hz.CausesValidation = false;
-            button60Hz.Dock = DockStyle.Fill;
-            button60Hz.FlatAppearance.BorderSize = 0;
-            button60Hz.FlatStyle = FlatStyle.Flat;
-            button60Hz.ForeColor = SystemColors.ControlText;
-            button60Hz.Location = new Point(200, 4);
-            button60Hz.Margin = new Padding(4);
-            button60Hz.Name = "button60Hz";
-            button60Hz.Secondary = false;
-            button60Hz.Size = new Size(188, 72);
-            button60Hz.TabIndex = 10;
-            button60Hz.Text = "60Hz";
-            button60Hz.UseVisualStyleBackColor = false;
+            buttonLowerRefresh.Activated = false;
+            buttonLowerRefresh.BackColor = SystemColors.ControlLightLight;
+            buttonLowerRefresh.BorderColor = Color.Transparent;
+            buttonLowerRefresh.BorderRadius = 5;
+            buttonLowerRefresh.CausesValidation = false;
+            buttonLowerRefresh.Dock = DockStyle.Fill;
+            buttonLowerRefresh.FlatAppearance.BorderSize = 0;
+            buttonLowerRefresh.FlatStyle = FlatStyle.Flat;
+            buttonLowerRefresh.ForeColor = SystemColors.ControlText;
+            buttonLowerRefresh.Location = new Point(200, 4);
+            buttonLowerRefresh.Margin = new Padding(4);
+            buttonLowerRefresh.Name = "buttonLowerRefresh";
+            buttonLowerRefresh.Secondary = false;
+            buttonLowerRefresh.Size = new Size(188, 72);
+            buttonLowerRefresh.TabIndex = 10;
+            buttonLowerRefresh.Text = "60Hz";
+            buttonLowerRefresh.UseVisualStyleBackColor = false;
             // 
-            // button120Hz
+            // buttonMaxRefresh
             // 
-            button120Hz.Activated = false;
-            button120Hz.BackColor = SystemColors.ControlLightLight;
-            button120Hz.BorderColor = Color.Transparent;
-            button120Hz.BorderRadius = 5;
-            button120Hz.Dock = DockStyle.Fill;
-            button120Hz.FlatAppearance.BorderSize = 0;
-            button120Hz.FlatStyle = FlatStyle.Flat;
-            button120Hz.ForeColor = SystemColors.ControlText;
-            button120Hz.Location = new Point(396, 4);
-            button120Hz.Margin = new Padding(4);
-            button120Hz.Name = "button120Hz";
-            button120Hz.Secondary = false;
-            button120Hz.Size = new Size(188, 72);
-            button120Hz.TabIndex = 11;
-            button120Hz.Text = "120Hz + OD";
-            button120Hz.UseVisualStyleBackColor = false;
+            buttonMaxRefresh.Activated = false;
+            buttonMaxRefresh.BackColor = SystemColors.ControlLightLight;
+            buttonMaxRefresh.BorderColor = Color.Transparent;
+            buttonMaxRefresh.BorderRadius = 5;
+            buttonMaxRefresh.Dock = DockStyle.Fill;
+            buttonMaxRefresh.FlatAppearance.BorderSize = 0;
+            buttonMaxRefresh.FlatStyle = FlatStyle.Flat;
+            buttonMaxRefresh.ForeColor = SystemColors.ControlText;
+            buttonMaxRefresh.Location = new Point(396, 4);
+            buttonMaxRefresh.Margin = new Padding(4);
+            buttonMaxRefresh.Name = "buttonMaxRefresh";
+            buttonMaxRefresh.Secondary = false;
+            buttonMaxRefresh.Size = new Size(188, 72);
+            buttonMaxRefresh.TabIndex = 11;
+            buttonMaxRefresh.Text = "120Hz + OD";
+            buttonMaxRefresh.UseVisualStyleBackColor = false;
             // 
             // buttonMiniled
             // 
@@ -2051,7 +2051,7 @@ namespace GHelper
         private Panel panelScreen;
         private TableLayoutPanel tableScreen;
         private RButton buttonScreenAuto;
-        private RButton button60Hz;
+        private RButton buttonLowerRefresh;
         private Panel panelKeyboard;
         private TableLayoutPanel tableLayoutMatrix;
         private RComboBox comboMatrixRunning;
@@ -2062,7 +2062,7 @@ namespace GHelper
         private PictureBox pictureColor2;
         private PictureBox pictureColor;
         private CheckBox checkMatrix;
-        private RButton button120Hz;
+        private RButton buttonMaxRefresh;
         private RButton buttonOptimized;
         private Label labelTipGPU;
         private Label labelTipScreen;

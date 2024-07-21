@@ -15,7 +15,7 @@ namespace GHelper.Display
                 if (SystemInformation.PowerStatus.PowerLineStatus == PowerLineStatus.Online)
                     SetScreen(MAX_REFRESH, 1);
                 else
-                    SetScreen(60, 0);
+                    SetScreen(90, 0);
             }
             else
             {
@@ -29,7 +29,7 @@ namespace GHelper.Display
             var refreshRate = ScreenNative.GetRefreshRate(laptopScreen);
             if (refreshRate < 0) return;
 
-            ScreenNative.SetRefreshRate(laptopScreen, refreshRate > 60 ? 60 : ScreenNative.GetMaxRefreshRate(laptopScreen));
+            ScreenNative.SetRefreshRate(laptopScreen, refreshRate > 90 ? 90 : ScreenNative.GetMaxRefreshRate(laptopScreen));
             InitScreen();
         }
 

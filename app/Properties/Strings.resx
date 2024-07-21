@@ -244,7 +244,7 @@
     <value>Auto</value>
   </data>
   <data name="AutoRefreshTooltip" xml:space="preserve">
-    <value>Sets 60Hz to save battery, and back when plugged</value>
+    <value>Sets 90Hz to save battery, and back when plugged</value>
   </data>
   <data name="Awake" xml:space="preserve">
     <value>Awake</value>
@@ -552,7 +552,7 @@ Do you still want to continue?</value>
     <value>Max refresh rate for lower latency</value>
   </data>
   <data name="MinRefreshTooltip" xml:space="preserve">
-    <value>60Hz refresh rate to save battery</value>
+    <value>90Hz refresh rate to save battery</value>
   </data>
   <data name="Minute" xml:space="preserve">
     <value>Minute</value>

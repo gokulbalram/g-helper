@@ -50,6 +50,8 @@ namespace GHelper
 
         bool sliderGammaIgnore = false;
 
+	int lowerRefresh = 90; //Set Lower Refresh here
+
         public SettingsForm()
         {
 
@@ -116,8 +118,8 @@ namespace GHelper
             panelScreen.AccessibleName = Properties.Strings.LaptopScreen;
 
             buttonScreenAuto.AccessibleName = Properties.Strings.AutoMode;
-            //button60Hz.AccessibleName = "60Hz Refresh Rate";
-            //button120Hz.AccessibleName = "Maximum Refresh Rate";
+            //buttonLowerRefresh.AccessibleName = "90Hz Refresh Rate";
+            //buttonMaxRefresh.AccessibleName = "Maximum Refresh Rate";
 
             panelKeyboard.AccessibleName = Properties.Strings.LaptopKeyboard;
             buttonKeyboard.AccessibleName = Properties.Strings.ExtraSettings;
@@ -138,8 +140,8 @@ namespace GHelper
             buttonOptimized.BorderColor = colorEco;
             buttonXGM.BorderColor = colorTurbo;
 
-            button60Hz.BorderColor = colorGray;
-            button120Hz.BorderColor = colorGray;
+            buttonLowerRefresh.BorderColor = colorGray;
+            buttonMaxRefresh.BorderColor = colorGray;
             buttonScreenAuto.BorderColor = colorGray;
             buttonMiniled.BorderColor = colorTurbo;
 
@@ -155,8 +157,8 @@ namespace GHelper
 
             VisibleChanged += SettingsForm_VisibleChanged;
 
-            button60Hz.Click += Button60Hz_Click;
-            button120Hz.Click += Button120Hz_Click;
+            buttonLowerRefresh.Click += buttonLowerRefresh_Click;
+            buttonMaxRefresh.Click += buttonMaxRefresh_Click;
             buttonScreenAuto.Click += ButtonScreenAuto_Click;
             buttonMiniled.Click += ButtonMiniled_Click;
             buttonFHD.Click += ButtonFHD_Click;
@@ -211,11 +213,11 @@ namespace GHelper
             buttonScreenAuto.MouseMove += ButtonScreenAuto_MouseHover;
             buttonScreenAuto.MouseLeave += ButtonScreen_MouseLeave;
 
-            button60Hz.MouseMove += Button60Hz_MouseHover;
-            button60Hz.MouseLeave += ButtonScreen_MouseLeave;
+            buttonLowerRefresh.MouseMove += buttonLowerRefresh_MouseHover;
+            buttonLowerRefresh.MouseLeave += ButtonScreen_MouseLeave;
 
-            button120Hz.MouseMove += Button120Hz_MouseHover;
-            button120Hz.MouseLeave += ButtonScreen_MouseLeave;
+            buttonMaxRefresh.MouseMove += buttonMaxRefresh_MouseHover;
+            buttonMaxRefresh.MouseLeave += ButtonScreen_MouseLeave;
 
             buttonFHD.MouseMove += ButtonFHD_MouseHover;
             buttonFHD.MouseLeave += ButtonScreen_MouseLeave;
@@ -820,12 +822,12 @@ namespace GHelper
             labelTipScreen.Text = "Switch to " + ((buttonFHD.Text == "FHD") ? "UHD" : "FHD") + " Mode";
         }
 
-        private void Button120Hz_MouseHover(object? sender, EventArgs e)
+        private void buttonMaxRefresh_MouseHover(object? sender, EventArgs e)
         {
             labelTipScreen.Text = Properties.Strings.MaxRefreshTooltip;
         }
 
-        private void Button60Hz_MouseHover(object? sender, EventArgs e)
+        private void buttonLowerRefresh_MouseHover(object? sender, EventArgs e)
         {
             labelTipScreen.Text = Properties.Strings.MinRefreshTooltip;
         }
@@ -1183,16 +1185,16 @@ namespace GHelper
         }
 
 
-        private void Button120Hz_Click(object? sender, EventArgs e)
+        private void buttonMaxRefresh_Click(object? sender, EventArgs e)
         {
             AppConfig.Set("screen_auto", 0);
             screenControl.SetScreen(ScreenControl.MAX_REFRESH, 1);
         }
 
-        private void Button60Hz_Click(object? sender, EventArgs e)
+        private void buttonLowerRefresh_Click(object? sender, EventArgs e)
         {
             AppConfig.Set("screen_auto", 0);
-            screenControl.SetScreen(60, 0);
+            screenControl.SetScreen(lowerRefresh, 0);
         }
 
 
@@ -1206,8 +1208,8 @@ namespace GHelper
         public void VisualiseScreen(bool screenEnabled, bool screenAuto, int frequency, int maxFrequency, int overdrive, bool overdriveSetting, int miniled1, int miniled2, bool hdr, int fhd)
         {
 
-            ButtonEnabled(button60Hz, screenEnabled);
-            ButtonEnabled(button120Hz, screenEnabled);
+            ButtonEnabled(buttonLowerRefresh, screenEnabled);
+            ButtonEnabled(buttonMaxRefresh, screenEnabled);
             ButtonEnabled(buttonScreenAuto, screenEnabled);
             ButtonEnabled(buttonMiniled, screenEnabled);
 
@@ -1215,26 +1217,27 @@ namespace GHelper
                 ? Properties.Strings.LaptopScreen + ": " + frequency + "Hz" + ((overdrive == 1) ? " + " + Properties.Strings.Overdrive : "")
                 : Properties.Strings.LaptopScreen + ": " + Properties.Strings.TurnedOff;
 
-            button60Hz.Activated = false;
-            button120Hz.Activated = false;
+            buttonLowerRefresh.Activated = false;
+            buttonMaxRefresh.Activated = false;
             buttonScreenAuto.Activated = false;
 
             if (screenAuto)
             {
                 buttonScreenAuto.Activated = true;
             }
-            else if (frequency == 60)
+            else if (frequency == maxFrequency)
             {
-                button60Hz.Activated = true;
+                buttonMaxRefresh.Activated = true;
             }
-            else if (frequency > 60)
+            else
             {
-                button120Hz.Activated = true;
+                buttonLowerRefresh.Activated = true;
             }
 
             if (maxFrequency > 60)
             {
-                button120Hz.Text = maxFrequency.ToString() + "Hz" + (overdriveSetting ? " + OD" : "");
+                buttonMaxRefresh.Text = maxFrequency.ToString() + "Hz" + (overdriveSetting ? " + OD" : "");
+		buttonLowerRefresh.Text = lowerRefresh.ToString() + "HZ";
                 panelScreen.Visible = true;
             }
             else if (maxFrequency > 0)
